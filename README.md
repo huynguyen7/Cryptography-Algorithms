@@ -1,5 +1,5 @@
 # CRYPTOGRAPHY ALGORITHMS
-This repo contains the implementation and explanation for crypto algorithms (from primitive to modern):
+This repo contains the implementation and explanation for crypto algorithms (from ancient to modern):
 - Caesar's Cipher.
 
 

@@ -1,0 +1,3 @@
+- Substituting method.
+- Similar to Caesar’s ciphar, however, this is an improvement since it can disguise the simple linguistic pattern.
+- Like Caesar's cipher, in modern cryptography, this algorithm is insecure.

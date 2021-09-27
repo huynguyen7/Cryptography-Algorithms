@@ -23,8 +23,8 @@ def decrypt(encrypted_data, key=1):  # Return bytes.
     assert isinstance(key, int) and key > 0, '[Error] Invalid key.'
     assert encrypted_data is not None and (isinstance(encrypted_data, bytes) or isinstance(encrypted_data, bytearray))
 
-    plain_data = bytearray()  # Buffer memory for result.
+    decrypted_data = bytearray()  # Buffer memory for result.
     for val in encrypted_data:
-        plain_data.append((val-key)%256)
+        decrypted_data.append((val-key)%256)
 
-    return plain_data
+    return decrypted_data

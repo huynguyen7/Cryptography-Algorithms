@@ -1,8 +1,8 @@
 import unittest
-from caesar_cipher import encrypt, decrypt
+from vigenere_cipher import encrypt, decrypt
 
 
-class CaesarCipherTest(unittest.TestCase):
+class VigenereCipherTest(unittest.TestCase):
     def test_empty(self):
         plain_data = ''
         encrypted_data = encrypt(plain_data.encode())
@@ -11,34 +11,34 @@ class CaesarCipherTest(unittest.TestCase):
         assert len(decrypted_data) == 0
 
     def test_digits(self):
-        key = 2
+        key = [1,2]
         plain_data = '123678'
         encrypted_data = encrypt(plain_data.encode(), key)
-        assert encrypted_data == '34589:'.encode()
+        assert encrypted_data == '24488:'.encode()
         decrypted_data = decrypt(encrypted_data, key)
         assert decrypted_data.decode() == plain_data
-    
+
     def test_chars(self):
-        key = 3
+        key = [3,4]
         plain_data = 'ade'
         encrypted_data = encrypt(plain_data.encode(), key)
-        assert encrypted_data == 'dgh'.encode()
+        assert encrypted_data == 'dhh'.encode()
         decrypted_data = decrypt(encrypted_data, key)
         assert decrypted_data.decode() == plain_data
 
     def test_digits_chars(self):
-        key = 1
+        key = [1,2]
         plain_data = 'ade123'
         encrypted_data = encrypt(plain_data.encode(), key)
-        assert encrypted_data == 'bef234'.encode()
+        assert encrypted_data == 'bff335'.encode()
         decrypted_data = decrypt(encrypted_data, key)
         assert decrypted_data.decode() == plain_data
 
     def test_boundary(self):
-        key = 257
+        key = [257,258]
         plain_data = 'ade123'
         encrypted_data = encrypt(plain_data.encode(), key)
-        assert encrypted_data == 'bef234'.encode()
+        assert encrypted_data == 'bff335'.encode()
         decrypted_data = decrypt(encrypted_data, key)
         assert decrypted_data.decode() == plain_data
 

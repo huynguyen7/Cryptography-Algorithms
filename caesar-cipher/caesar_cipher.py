@@ -1,9 +1,9 @@
 """
     
     @author: Huy Nguyen
-    - Implementation for Caesar Cipher method (encrypting and decrypting).
-    - Used by Julius Caesar.
+    - Implementation for Caesar's Cipher method (encrypting and decrypting).
     - The encrypting phase moves up the byte in ascii format by <key> value. Then, decrypt by moving down the encrypted byte by <key> value.
+    - Source: https://en.wikipedia.org/wiki/Caesar_cipher
 
 """
 

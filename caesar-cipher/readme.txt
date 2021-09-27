@@ -2,3 +2,4 @@
 - The key is the number of time we move the ascii byte forward/backward.
 - Specifically, the algorithm encrypts data by moving forward a specific byte by a number of int value (key, based on ascii characters). In contrast, the decrypting phase doing the same but in a backward way. For example, with a character 'a', key=1, the resulting encrypted data is 'b'.
 - Only 256 keys possible! Thus, talking about cryptanalysis, based on probability, Caesar’s adversaries must try about half the keys (about 256/2), on average, until they stumble on the correct key and decrypt the message.
+- Importantly, even we can change the order of the ascii chars alphabet, in order to have more cipher's possibilities, however, this algorithm does not disguise the linguistic patterns of letter and word frequency in the encrypted message. This aspect of the Caesar cipher method gives a good cryptanalyst enough information to very quickly recover plaintext.

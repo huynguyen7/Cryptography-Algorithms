@@ -18,14 +18,21 @@ def bitwise_or_bytes(a, b):
     return int_rs.to_bytes(max(len(a), len(b)), byteorder='big')
 
 
-class MerkleLeafNode(object):
+class MerkleNode(object):
+    def __init__(self, hash_val):
+        self.hash_val = hash_val
+
+
+class MerkleLeafNode(MerkleNode):
     def __init__(self, data):
-        self.hash_val = h(data)
+        super().__init__(h(data))
 
 
-class MerkleNonleafNode(object):
+class MerkleNonleafNode(MerkleNode):
     def __init__(self, data1, data2):
-        self.hash_val = h(bitwise_or_bytes(data1, data2))
+        super().__init__(h(bitwise_or_bytes(data1.hash_val.digest(), data2.hash_val.digest())))
+        self.left = data1
+        self.right = data2
 
 
 def get_merkle_tree_file_hash(file_path, block_size=4):
@@ -59,7 +66,7 @@ def get_merkle_tree_file_hash(file_path, block_size=4):
                 node1 = my_queue.popleft()
                 node2 = my_queue.popleft()
                 if node2 is not None:
-                    node = MerkleNonleafNode(node1.hash_val.digest(), node2.hash_val.digest())
+                    node = MerkleNonleafNode(node1, node2)
                     my_queue.append(node)
                 else:
                     my_queue.append(node)
@@ -69,8 +76,8 @@ def get_merkle_tree_file_hash(file_path, block_size=4):
 
 def main():
     file_path = './my_file.txt'
-    tophash = get_merkle_tree_file_hash(file_path, block_size=4)
-    print('Result top hash: ', tophash.hash_val.digest())
+    root_node = get_merkle_tree_file_hash(file_path, block_size=4)
+    print('Result root hash: ', root_node.hash_val.digest())
 
 if __name__ == "__main__":
     main()

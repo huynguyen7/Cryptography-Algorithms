@@ -2,12 +2,13 @@
 
     A super-increasing-sequence is a list of numbers that their sum from given index i to j are always UNIQUE.
     In another word, the uniqueness of each sum is guaranteed.
+    The reason to use super increasing sequence is there is only one combination exist in each value of the super increasing sequence. Thus, this is effective for the distributor (key generator, Alice) in order to recognize which value the receiver (Bob) chose.
     
     +Source: https://en.wikipedia.org/wiki/Superincreasing_sequence
 
 '''
 
-
+# Gut check for super increasing sequence if it is valid.
 def is_super_increasing_sequence(seq: list):
     seq_sum = 0
     flag = True
